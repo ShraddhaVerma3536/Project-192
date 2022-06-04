@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+  <title>Project 192</title>
+
+  <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+  <script
+    src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v4.0.1/dist/aframe-physics-system.min.js"></script>
+  <script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script>
+  <script src="https://recast-api.donmccurdy.com/aframe-inspector-plugin-recast.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+  <script src="./shoot.js"></script>
+
+</head>
+
+<body>
+    <a-scene id="scene" physics="debug:false" >
+
+    <!--Assets-->
+    <a-assets>
+        <a-asset-item id="plain" src="./assets/plain/scene.gltf"></a-asset-item>
+        <a-asset-item id="ball" src="./assets/ball.glb"></a-asset-item>
+        <a-asset-item id="penguin" src="./assets/Penguin part 2/scene.gltf"></a-asset-item>       
+        <a-asset-item
+          id="shooter"
+          src="./models/shooter/gun.gltf"
+        ></a-asset-item>
+
+    <!--A-Frame Environment-->
+    <!-- <a-entity id="environment" environment="preset:arches;skyColor:#33B8E5 ; skyType:gradient; lighting:point;">
+    </a-entity> -->
+
+    <!--Light-->
+    <a-entity light="type: ambient; color: white; intensity:0.8"></a-entity>
+    <a-entity light="type: directional; color: #000; intensity: 0.5" position="-1 1 0"></a-entity>
+
+       <!--Ground-->
+       <a-plane
+       id="ground"
+       repeat="5 5"
+       position="0 1 0"
+       rotation="-90 0 0"
+       height="200"
+       width="200"
+       color="#FBF2D4"
+       static-body
+       visible="true">
+       </a-plane>
+
+       <a-entity
+            id="weapon"
+            gltf-model="#shooter"
+            position="0 -4.4 3"
+            rotation="0 180 0"
+            scale="0.35 1 1"          
+          >
+        </a-entity>
+
+       <a-entity
+        id="camera"
+        camera
+        position="0 1.6 0"
+        wasd-controls
+        look-controls="pointerLockEnabled: false"        
+      ></a-entity>
+
+    </a-plane>
+    <a-box color = "black" id = "wall1" position = "-20 1.5 -20" depth = "1" width = "10" height = "50" static-body ></a-box>
+
+    <a-box color = "black" id = "wall2" position = "0 1.5 -20" depth = "1" width = "10" height = "50" static-body ></a-box>
+
+    <a-box color = "black" id = "wall3" position = "20 1.5 -20" depth = "1" width = "10" height = "50" static-body ></a-box>
+
+    <a-box color = "grey" id = "wall4" position = "-10 1.5 -20" depth = "1" width = "10" height = "50" opacity = "0.5" ></a-box>
+
+    <a-box color = "grey" id = "wall5" position = "10 1.5 -20" depth = "1" width = "10" height = "50" opacity = "0.5" ></a-box>
+
+    <a-box color = "grey" id = "wall6" position = "-30 1.5 -20" depth = "1" width = "10" height = "50" opacity = "0.5" ></a-box>
+
+    <a-box color = "grey" id = "wall7" position = "30 1.5 -20" depth = "1" width = "10" height = "50" opacity = "0.5" ></a-box>
+
+    <!--Boxes-->
+    <a-entity position="-2 1.5 -10" gltf-model = "#penguin" scale = "0.1 0.1 0.5" dynamic-body></a-entity>
+
+    <a-box position="0 1.5 -10" gltf-model = "#penguin" scale = "0.1 0.1 0.5" dynamic-body></a-box>
+
+    <a-box position="2 1.5 -10" gltf-model = "#penguin" scale = "0.1 0.1 0.5" dynamic-body></a-box>
+
+    <a-box position="-1 2.5 -10" gltf-model = "#penguin" scale = "0.1 0.1 0.5" dynamic-body></a-box>
+
+    <a-box position="1 2.5 -10" gltf-model = "#penguin" scale = "0.1 0.1 0.5" dynamic-body></a-box>
+
+    <a-box position="0 3.5 -10" gltf-model = "#penguin" scale = "0.1 0.1 0.5" dynamic-body></a-box>
+
+</a-scene>
+</body>
+</html>
